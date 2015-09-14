@@ -2,21 +2,26 @@ Die one;
 void setup()
 {
 	noLoop();
-	size(600,600);
+	size(600,700);
 	
 }
 void draw()
 {
+	int sum = 0;
 	strokeWeight(10);
-	background(127);
+	background(255);
 	for(int y = 0; y < 600; y+=200)
 	{
 		for(int x = 0; x < 600; x+=200)
 		{
 			one = new Die(x,y);
 			one.show();
+			sum = one.rolling + sum;
 		}
 	}
+	textSize(50);
+	textAlign(CENTER);
+	text("total = " + sum, 300,700);
 }
 void mousePressed()
 {

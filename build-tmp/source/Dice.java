@@ -18,21 +18,26 @@ Die one;
 public void setup()
 {
 	noLoop();
-	size(600,600);
+	size(600,700);
 	
 }
 public void draw()
 {
+	int sum = 0;
 	strokeWeight(10);
-	background(127);
+	background(255);
 	for(int y = 0; y < 600; y+=200)
 	{
 		for(int x = 0; x < 600; x+=200)
 		{
 			one = new Die(x,y);
 			one.show();
+			sum = one.rolling + sum;
 		}
 	}
+	textSize(50);
+	textAlign(CENTER);
+	text("total = " + sum, 300,700);
 }
 public void mousePressed()
 {
@@ -42,14 +47,13 @@ class Die //models one single dice cube
 {
 	int myX, myY;
 	int rolling = (int)(Math.random()*6)+1;
-	Die(int x,int y)    //constructor
+	Die(int x,int y)
 	{
 		myX = x;
 		myY = y;
 	}
 	public void show()
 	{
-		System.out.println(rolling);
 		fill(255);
 		rect(myX,myY,200,200);
 		fill(0);
